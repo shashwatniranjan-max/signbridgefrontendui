@@ -67,7 +67,7 @@ function Workspace() {
   }, [demo, cam, model, videoRef]);
 
   useEffect(() => {
-    if (demo) setMsgs((m) => (m.length ? m : DEMO_MSGS.map((x) => ({ ...x, at: Date.now() }))));
+    if (demo) setMsgs((m) => [...DEMO_MSGS.map((x) => ({ ...x, at: Date.now() })), ...m.filter((x) => !DEMO_MSGS.some((d) => d.id === x.id))]);
     else setMsgs((m) => m.filter((x) => !x.demo));
   }, [demo]);
 
