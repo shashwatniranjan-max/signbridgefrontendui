@@ -16,7 +16,7 @@ export function createDemoRecognitionService(intervalMs = 5000): RecognitionServ
     start(_video, onResult) {
       this.stop();
       const emit = () => {
-        const s = DEMO_SAMPLES[i % DEMO_SAMPLES.length];
+        const s = DEMO_SAMPLES[i % DEMO_SAMPLES.length]!;
         i++;
         onResult({ ...s, timestamp: Date.now(), source: "demo" });
       };
